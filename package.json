@@ -5,9 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "run": "tailwindcss -i ./src/input.css -o ./public/style.css --watch",
-    "build": "npx tailwindcss -i ./src/input.css -o ./public/style.css --minify && xcopy /E /I /Y public dist",
+    "build": "npx tailwindcss -i ./src/input.css -o ./public/style.css --minify && robocopy public dist /E /XD node_modules .cache",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "node deploy.js"
   },
   "keywords": [],
   "author": "",
