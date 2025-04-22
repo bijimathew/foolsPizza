@@ -9,8 +9,8 @@ document.querySelectorAll('.hover-warning').forEach((img) => {
 
 
 
-const searchInput = document.getElementById("searchInput"); // Get search input field
-const suggestionsBox = document.getElementById("suggestions"); // Get the suggestion box
+const searchInput = document.getElementById("searchInput"); 
+const suggestionsBox = document.getElementById("suggestions");
 
 const pizza = {
     chikenPizza: [
@@ -44,46 +44,46 @@ const pizza = {
         }
     ]
 };
-// When the user types in the input box
+
 searchInput.addEventListener("input", function () {
-    let query = searchInput.value.toLowerCase(); // Get text from input
-    suggestionsBox.innerHTML = ""; // Clear old suggestions
+    let query = searchInput.value.toLowerCase(); 
+    suggestionsBox.innerHTML = ""; 
 
-    if (query !== "") { // If input is not empty
-        let results = []; // Create an empty array for matches
+    if (query !== "") { 
+        let results = []; 
 
-        // Loop through all pizza objects
+
         for (let key in pizza) {
             pizza[key].forEach(function (item) {
-                // Check if the pizza name includes the input text
+               
                 if (item.name.toLowerCase().includes(query)) {
-                    results.push(item.name); // Add matching name to results
+                    results.push(item.name); 
                 }
             });
         }
 
-        // If we found results, show them
+
         if (results.length > 0) {
             results.forEach(function (name) {
-                let li = document.createElement("li"); // Create new list item
-                li.textContent = name; // Set its text
-                li.className = "p-2 hover:bg-gray-200 cursor-pointer"; // Add styles
+                let li = document.createElement("li"); 
+                li.textContent = name; 
+                li.className = "p-2 hover:bg-gray-200 cursor-pointer";
 
-                // When we click a suggestion, put it in the input box
+            
                 li.addEventListener("click", function () {
                     searchInput.value = name;
-                    suggestionsBox.classList.add("hidden"); // Hide suggestions
+                    suggestionsBox.classList.add("hidden"); 
                 });
 
-                suggestionsBox.appendChild(li); // Add to list
+                suggestionsBox.appendChild(li); 
             });
 
-            suggestionsBox.classList.remove("hidden"); // Show the suggestion box
+            suggestionsBox.classList.remove("hidden"); 
         } else {
-            suggestionsBox.classList.add("hidden"); // Hide if no results
+            suggestionsBox.classList.add("hidden");
         }
     } else {
-        suggestionsBox.classList.add("hidden"); // Hide if input is empty
+        suggestionsBox.classList.add("hidden");
     }
 });
 
